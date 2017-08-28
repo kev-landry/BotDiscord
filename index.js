@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const Google = require ('./commands/google');
 const Quote = require('./quotes');
 const Play = require ('./commands/play');
+const Dialogue = require('./dialogue/dialogue');
 
 
 bot.on('ready', function(){
@@ -21,6 +22,10 @@ bot.on('guildMemberAdd', function(member){
 })
 
 bot.on('message', function(message) {
+  console.log("Dialogue.match(message)")
+  if (Dialogue.match(message) == true) {
+    return Dialogue.responseDialogue(message, bot)
+  }
   if (message.content === 'Salut Pat') {
     message.reply('wiiiiiiiiiii')
   }
@@ -37,6 +42,6 @@ bot.on('message', function(message) {
     return Play.action(message)
   }
 })
-
+//test
 
 bot.login('MzQ2MjI4OTY0NDk2MjQ0NzM5.DHG22A.LV2t8ECPMM_zJbD4L94hnE3GaRg')
