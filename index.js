@@ -4,6 +4,7 @@ const Google = require ('./commands/google');
 const Quote = require('./quotes');
 const Play = require ('./commands/play');
 const Dialogue = require('./dialogue/dialogue');
+const Youtube = require('./commands/youtube');
 
 
 bot.on('ready', function(){
@@ -22,12 +23,8 @@ bot.on('guildMemberAdd', function(member){
 })
 
 bot.on('message', function(message) {
-  console.log("Dialogue.match(message)")
   if (Dialogue.match(message) == true) {
     return Dialogue.responseDialogue(message, bot)
-  }
-  if (message.content === 'Salut Pat') {
-    message.reply('wiiiiiiiiiii')
   }
   if (message.content === 'Pat fais moi rêver !') {
     message.reply(Quote.randomQuotes())
@@ -40,6 +37,9 @@ bot.on('message', function(message) {
   }
   if (Play.match(message)) {
     return Play.action(message)
+  }
+  if (Youtube.match(message)) {
+    return Youtube.action(message)
   }
 })
 //test

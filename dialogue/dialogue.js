@@ -14,7 +14,6 @@ class Dialogue {
       if(tab_message[i] == "salut" || tab_message[i] == "hey"){
         var var2 = tab_message[i]
       }
-      console.log("boucle dialogue");
       i++
     }
     if(var1 && var2) {
